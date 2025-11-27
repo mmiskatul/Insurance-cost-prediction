@@ -9,3 +9,10 @@ le_gender =joblib.load("label_encoder_gender.pkl")
 le_diabetic =joblib.load("label_encoder_diabetic.pkl") 
 le_smoker =joblib.load("label_encoder_smoker.pkl") 
 model =joblib.load("Best model.pkl")
+
+
+st.set_page_config(page_title ="Insurance Claim Predictor",layout="Center") 
+st.title("Health Insurance Payment Prediction App") 
+st.write("Enter the Details below to estimate you insurance payment amount .") 
+
+
