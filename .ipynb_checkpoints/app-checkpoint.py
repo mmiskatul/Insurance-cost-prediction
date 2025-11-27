@@ -16,3 +16,29 @@ st.title("Health Insurance Payment Prediction App")
 st.write("Enter the Details below to estimate you insurance payment amount .") 
 
 
+with st.form("input_form"):
+    col1,col2 = st.columns(2) 
+    with col1:
+        age = st.number_input("Age",min_value=0,max_value=100,value=30) 
+        bmi = st.number_input("BMI",min_value=10.0,max_value=60.0,value=25.0) 
+        children = st.number_input("Number of Children",min_value=0,max_value=8,value=0) 
+
+    with col2:
+        bloodpressure = st.number_input("Blood Pressure",min_value=60,max_value=200,value=120) 
+        gender = st.selectbox("Gender",options=le_gender.classes_) 
+        diabetic =st.selectbox("Diabetic",options=le_diabetic.classes_) 
+        smoker =st.selectbox("Smoker",options=le_smoker.classes_)
+        
+    submitted =st.form_submit_button("Predict Payment")
+
+if submitted: 
+
+    input_data = pd.DataFrame({
+        "age":[age],
+        "gender":[gender],
+        "bmi":[bmi],
+        "bloodpressure":[bloodpressure],
+        "diabetic":[diabetic],
+        "children":[children],
+        "smoker":[smoker]
+    })
