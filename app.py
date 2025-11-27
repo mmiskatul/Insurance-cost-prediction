@@ -41,4 +41,14 @@ if submitted:
         "diabetic":[diabetic],
         "children":[children],
         "smoker":[smoker]
-    })
+    }) 
+    input_data['gender'] =le_gender.transform(input_data["gender"]) 
+    input_data['diabetic']=le_diabetic.tranform(input_data['diabetic']) 
+    input_data['smoker']=le_smoker.tranform(input_data['smoker'])  
+
+    num_cols =["age","bmi","bloodpressure","children"]
+    input_data[num_cols]=scaler.transform(input_data[num_cols]) 
+
+    prediction =model.predict(input_data)[0] 
+
+    st.success(f"**Estimated Insurance payment Amount:** ${prediction:,.2f}")
